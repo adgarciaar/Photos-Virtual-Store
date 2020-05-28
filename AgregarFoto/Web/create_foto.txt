@@ -1,0 +1,16 @@
+CREATE TABLE Foto
+( idFoto number(10) NOT NULL,
+  archivo varchar2(50) NOT NULL,
+  descripcion varchar2(50) NOT NULL,
+  fecha varchar2(30) NOT NULL,
+  pais varchar2(50) NOT NULL,
+  ubicacion varchar2(100),
+  evento varchar2(100),
+  sujeto varchar2(100),
+  tema varchar2(50),
+  precio number(6),
+  correo varchar2(100) NOT NULL,
+  CONSTRAINT foto_pk PRIMARY KEY (idFoto)
+);
+
+COMMIT;
