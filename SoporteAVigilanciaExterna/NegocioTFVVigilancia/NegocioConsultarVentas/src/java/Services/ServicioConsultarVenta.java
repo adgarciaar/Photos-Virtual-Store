@@ -5,6 +5,7 @@
  */
 package Services;
 
+import Entity.FechaVenta;
 import Entity.Venta;
 import Facade.VentaFacade;
 import java.util.List;
@@ -49,8 +50,8 @@ public class ServicioConsultarVenta {
     }
 
     @WebMethod(operationName = "findAll")
-    public List<Venta> findAll() {
-        return ejbRef.findAll();
+    public List<Venta> findAll(FechaVenta fechaventa) {
+        return ejbRef.findAll(fechaventa);
     }
 
     @WebMethod(operationName = "findRange")

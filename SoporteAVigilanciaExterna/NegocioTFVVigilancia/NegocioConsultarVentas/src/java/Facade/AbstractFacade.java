@@ -5,6 +5,9 @@
  */
 package Facade;
 
+import Entity.FechaVenta;
+import Entity.Venta;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -38,10 +41,18 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().find(entityClass, id);
     }
 
-    public List<T> findAll() {
+    public List<T> findAll(FechaVenta fechaventa) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        return getEntityManager().createQuery(cq).getResultList();
+        List<Venta> ventas=new ArrayList<Venta>();
+        for( Venta venta : (List<Venta>)getEntityManager().createQuery(cq).getResultList() )
+        {
+            if(venta.getFecha().trim().equals(fechaventa.getFechaConsulta()))
+            {
+                ventas.add(venta);
+            }
+        }
+        return (List<T>)ventas;
     }
 
     public List<T> findRange(int[] range) {
