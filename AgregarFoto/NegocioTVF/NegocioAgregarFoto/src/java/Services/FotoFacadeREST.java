@@ -44,7 +44,9 @@ public class FotoFacadeREST extends AbstractFacade<Foto> {
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Foto entity) {
-        fotoFacade.create(entity);
+        //fotoFacade.publicarEnCola(entity);
+        //fotoFacade.create(entity);
+        fotoFacade.agregarFoto(entity);
         //super.create(entity);
     }
 
