@@ -34,32 +34,32 @@ public class IntegradorCorreo {
     private static final Logger LOGGER = Logger.getAnonymousLogger();
 
     private static final String SERVIDOR_SMTP = "smtp.office365.com";
-    private static final int PORTA_SERVIDOR_SMTP = 587;
-    private static final String CONTA_PADRAO = "diego.mateus@javeriana.edu.co";
-    private static final String SENHA_CONTA_PADRAO = "mateuscruz1994";
+    private static final int PORT_SERVIDOR_SMTP = 587;
+    //private static final String CONTA_PADRAO = "diego.mateus@javeriana.edu.co";
+    private static final String password = "mateuscruz1994";
 
-    private final String from = "diego.mateus@javeriana.edu.co";
-    private final String to = "adriangarcia@javeriana.edu.co";
+    //private final String from = "diego.mateus@javeriana.edu.co";
+    //private final String to = "adriangarcia@javeriana.edu.co";
 
-    private final String subject = "Prueba desde Java 2";
-    private final String messageContent = "Mi primer correo desde Java 2";
+    //private final String subject = "Prueba desde Java 2";
+    //private final String messageContent = "Mi primer correo desde Java 2";
 
     public void sendEmail(Correo correo) {
         final Session session = Session.getInstance(this.getEmailProperties(), new Authenticator() {
 
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(CONTA_PADRAO, SENHA_CONTA_PADRAO);
+                return new PasswordAuthentication(correo.getRemitente(), password);
             }
 
         });
 
         try {
             final Message message = new MimeMessage(session);
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setFrom(new InternetAddress(from));
-            message.setSubject(subject);
-            message.setText(messageContent);
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(correo.getDirigido()));
+            message.setFrom(new InternetAddress(correo.getRemitente()));
+            message.setSubject(correo.getAsunto());
+            message.setText(correo.getMensaje());
             message.setSentDate(new Date());
             Transport.send(message);
         } catch (final MessagingException ex) {
@@ -72,7 +72,7 @@ public class IntegradorCorreo {
         config.put("mail.smtp.auth", "true");
         config.put("mail.smtp.starttls.enable", "true");
         config.put("mail.smtp.host", SERVIDOR_SMTP);
-        config.put("mail.smtp.port", PORTA_SERVIDOR_SMTP);
+        config.put("mail.smtp.port", PORT_SERVIDOR_SMTP);
         return config;
     }
     
