@@ -141,6 +141,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FechaVenta }
+     * 
+     */
+    public FechaVenta createFechaVenta() {
+        return new FechaVenta();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Count }{@code >}}
      * 
      */
