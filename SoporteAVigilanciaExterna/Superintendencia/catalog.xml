@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://10.39.1.128:8080/NegocioConsultarVentas/ServicioConsultarVenta?WSDL" uri="src/conf/xml-resources/web-service-references/ServicioConsultarVenta/wsdl/10.39.1.128_8080/NegocioConsultarVentas/ServicioConsultarVenta.wsdl"/>
+    <system systemId="http://10.39.1.128:8080/NegocioConsultarVentas/ServicioConsultarVenta?xsd=1" uri="src/conf/xml-resources/web-service-references/ServicioConsultarVenta/wsdl/10.39.1.128_8080/NegocioConsultarVentas/ServicioConsultarVenta.xsd_1.xsd"/>
+</catalog>
