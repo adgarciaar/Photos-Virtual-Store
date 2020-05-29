@@ -1,0 +1,46 @@
+archivo de foto (navegando a su ubicación) (el tamaño máximo es de 5 MB y el formato de
+archivo es jpg)
+o descripción de la foto
+o fecha en que se tomó la foto
+o país (de la lista de países disponibles)
+o Opcionalmente, ubicación detallada (por ejemplo, provincia / estado, ciudad, parque
+nacional Iguaçu, Monte Kinabalu )
+
+evento opcional (por ejemplo, año nuevo, día de Canadá, fiesta de luna llena)
+o opcionalmente sujeto (por ejemplo, nombre de una persona, Estatua de la Libertad)
+o un tema ("paisaje", "retrato", "deportes", "animales" o "arquitectura")
+o precio de la foto
+
+
+CREATE TABLE Foto
+( idFoto number(10) NOT NULL,
+  archivo varchar2(50) NOT NULL,
+  descripcion varchar2(50) NOT NULL,
+  fecha varchar2(30) NOT NULL,
+  pais varchar2(50) NOT NULL,
+  ubicacion varchar2(100),
+  evento varchar2(100),
+  sujeto varchar2(100),
+  tema varchar2(50),
+  precio number(6),
+  correo varchar2(100) NOT NULL,
+  CONSTRAINT foto_pk PRIMARY KEY (idFoto)
+);
+
+COMMIT;
+
+
+CREATE TABLE Venta
+( idVenta number(10) NOT NULL,
+  idFoto number(10) NOT NULL,
+  fecha varchar2(50) NOT NULL,
+  valor number(6) NOT NULL,
+  CONSTRAINT venta_pk PRIMARY KEY (idVenta)
+);
+
+COMMIT;
+
+INSERT INTO Venta (idVenta, idFoto, fecha, valor) values (1, 1, '12/03/20', 67);
+INSERT INTO Venta (idVenta, idFoto, fecha, valor) values (2, 2, '13/03/20', 70);
+
+COMMIT;
