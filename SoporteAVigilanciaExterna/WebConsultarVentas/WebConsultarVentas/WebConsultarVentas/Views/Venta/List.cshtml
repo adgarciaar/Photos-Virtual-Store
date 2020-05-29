@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebConsultarVentas.ServicioVentas.venta>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idfoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idventa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idventaSpecified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idfoto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idventa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idventaSpecified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Services/" targetNamespace="http://Services/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="count" type="tns:count" />
+  <xs:element name="countResponse" type="tns:countResponse" />
+  <xs:element name="create" type="tns:create" />
+  <xs:element name="edit" type="tns:edit" />
+  <xs:element name="find" type="tns:find" />
+  <xs:element name="findAll" type="tns:findAll" />
+  <xs:element name="findAllResponse" type="tns:findAllResponse" />
+  <xs:element name="findRange" type="tns:findRange" />
+  <xs:element name="findRangeResponse" type="tns:findRangeResponse" />
+  <xs:element name="findResponse" type="tns:findResponse" />
+  <xs:element name="remove" type="tns:remove" />
+  <xs:element name="venta" type="tns:venta" />
+  <xs:complexType name="count">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="countResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="create">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entity" type="tns:venta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="venta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+      <xs:element name="idfoto" type="xs:long" />
+      <xs:element minOccurs="0" name="idventa" type="xs:long" />
+      <xs:element name="valor" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findAll">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:fechaVenta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fechaVenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaConsulta" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findAllResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:venta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="remove">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entity" type="tns:venta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="edit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entity" type="tns:venta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="find">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:venta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="range" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findRangeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:venta" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
