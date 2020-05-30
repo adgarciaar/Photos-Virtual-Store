@@ -1,0 +1,9 @@
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\bin\SistemaDerechosAutor.dll.config
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\bin\SistemaDerechosAutor.dll
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\bin\SistemaDerechosAutor.pdb
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\bin\EntityFramework.dll
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\bin\EntityFramework.SqlServer.dll
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\bin\EntityFramework.xml
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\bin\EntityFramework.SqlServer.xml
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\obj\Release\SistemaDerechosAutor.dll
+C:\Users\Administrador.AS-9\documents\visual studio 2017\Projects\SistemaDerechosAutor\SistemaDerechosAutor\obj\Release\SistemaDerechosAutor.pdb
