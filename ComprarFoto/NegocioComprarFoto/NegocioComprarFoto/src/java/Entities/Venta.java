@@ -5,7 +5,6 @@
  */
 package Entities;
 
-import Integrador.Comprador;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -122,24 +121,6 @@ public class Venta implements Serializable {
     @Override
     public String toString() {
         return "Entities.Venta[ idventa=" + idventa + " ]";
-    }
-    public static void main(String []args )
-    {
-        
-        System.err.println("algo");
-        Comprador comprador= new Comprador();
-        Integrador.Venta venta=new Integrador.Venta();
-        comprador.setNumeroTarjeta(1000000000000000L);
-        venta.setValor(1000);
-        System.out.print(consultarSaldo(comprador, venta));
-        
-        
-    }
-
-    private static boolean consultarSaldo(Integrador.Comprador arg0, Integrador.Venta arg1) {
-        Integrador.NewWebService_Service service = new Integrador.NewWebService_Service();
-        Integrador.NewWebService port = service.getNewWebServicePort();
-        return port.consultarSaldo(arg0, arg1);
     }
     
 }
