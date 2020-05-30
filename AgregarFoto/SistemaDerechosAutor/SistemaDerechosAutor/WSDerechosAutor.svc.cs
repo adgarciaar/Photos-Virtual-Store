@@ -15,7 +15,7 @@ namespace SistemaDerechosAutor
         public Boolean ConsultarFotoHabilitada(int id)
         {
 
-            /*using (var contexto = new DerechosAutorEntitiesA())
+            using (var contexto = new DerechosAutorEntitiesA())
             {
                 DerechosAutor estaHabilitada = contexto.DerechosAutor.FirstOrDefault(da => da.Id == id);
                 if (estaHabilitada==null)
@@ -27,8 +27,7 @@ namespace SistemaDerechosAutor
                     return true;
                 else
                     return false;
-            }*/
-            return true;
+            }
         }
 
         public void DoWork()
