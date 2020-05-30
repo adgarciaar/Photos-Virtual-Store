@@ -26,7 +26,7 @@ public class ProxyWebAgregarFoto {
 
     private WebTarget webTarget;
     private Client client;
-    private static final String BASE_URI = "http://10.39.1.128:8080/NegocioAgregaFoto/webresources";
+    private static final String BASE_URI = "http://10.39.1.120:8080/NegocioAgregarFoto/webresources";
 
     public ProxyWebAgregarFoto() {
         client = javax.ws.rs.client.ClientBuilder.newClient();
