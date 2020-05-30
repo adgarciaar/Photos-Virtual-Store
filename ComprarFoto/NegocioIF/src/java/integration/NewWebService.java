@@ -69,7 +69,7 @@ public class NewWebService {
     public boolean consultarSaldo(Comprador comprador, Venta venta){
         
         Tarjeta tarjeta = ejbRef.consultarSaldo(comprador.getNumeroTarjeta());
-        return venta.getValor() < tarjeta.getSaldo();
+        return venta.getValor() <= tarjeta.getSaldo();
     }
     
     
