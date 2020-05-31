@@ -42,6 +42,7 @@ public class FotoFacade extends AbstractFacade<Foto> {
     
     public void calcularValorFoto(Compra fotos)
     {
+        System.out.print("llegue a la funcion calcular");
         String todosLosIds=fotos.getIdFotos();
         StringTokenizer st= new StringTokenizer(todosLosIds, ",");
         while (st.hasMoreTokens())
