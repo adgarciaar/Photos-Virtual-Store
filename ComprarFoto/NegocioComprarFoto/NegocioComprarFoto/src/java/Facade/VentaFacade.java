@@ -5,7 +5,6 @@
  */
 package Facade;
 
-import Entities.Compra;
 import Entities.Venta;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
