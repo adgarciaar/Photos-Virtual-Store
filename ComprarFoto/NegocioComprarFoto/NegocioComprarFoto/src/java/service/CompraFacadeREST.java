@@ -6,7 +6,6 @@
 package service;
 
 import Entities.Compra;
-import Facade.FotoFacade;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -33,17 +32,17 @@ public class CompraFacadeREST extends AbstractFacade<Compra> {
     @PersistenceContext(unitName = "NegocioComprarFotoPU")
     private EntityManager em;
 
-    @EJB
-    FotoFacade fotosFacace=new FotoFacade();
     public CompraFacadeREST() {
         super(Compra.class);
     }
 
+    @EJB
+    Facade.CompraFacade comprafacace;
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Compra entity) {
-        super.create(entity);
+        this.comprafacace.calcularValorFoto(entity);
     }
 
     @PUT
