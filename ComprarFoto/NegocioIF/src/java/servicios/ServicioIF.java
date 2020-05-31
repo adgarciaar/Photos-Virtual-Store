@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package integration;
+package servicios;
 
 import entities.Comprador;
 import entities.Tarjeta;
@@ -20,8 +20,8 @@ import javax.jws.WebService;
  *
  * @author Administrador
  */
-@WebService(serviceName = "NewWebService")
-public class NewWebService {
+@WebService(serviceName = "ServicioIF")
+public class ServicioIF {
 
     @EJB
     private FacadeIF ejbRef;// Add business logic below. (Right-click in editor and choose
@@ -64,13 +64,13 @@ public class NewWebService {
     public int count() {
         return ejbRef.count();
     }
-    
+
     @WebMethod(operationName = "consultarSaldo")
     public boolean consultarSaldo(Comprador comprador, Venta venta){
-        
         Tarjeta tarjeta = ejbRef.consultarSaldo(comprador.getNumeroTarjeta());
         return venta.getValor() <= tarjeta.getSaldo();
     }
+    
     
     
 }

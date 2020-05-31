@@ -11,7 +11,7 @@ package entities;
  */
 public class Venta {
     
-     long idventa;
+    long idventa;
     long idfoto;
     String fecha;
     int valor;
