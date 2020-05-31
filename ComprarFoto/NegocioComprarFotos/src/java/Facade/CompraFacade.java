@@ -9,6 +9,10 @@ import Entities.Compra;
 import Entities.Foto;
 import Integrador.Comprador;
 import Integrador.ServicioIF_Service;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.StringTokenizer;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -31,6 +35,8 @@ public class CompraFacade extends AbstractFacade<Compra> {
     
     @EJB
     FotoFacade fotoFacade;
+    @EJB 
+    VentaFacade ventaFacade;
 
     @Override
     protected EntityManager getEntityManager() {
@@ -55,7 +61,35 @@ public class CompraFacade extends AbstractFacade<Compra> {
             if(prueba)
             {
                 System.out.println("foto enviada a sistemas externos");
-                //TODO publicar información de ventas en el topico
+                Entities.Venta venta=new Entities.Venta();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+                Date date = new Date();
+                String fechaConsulta = dateFormat.format(date);  
+                venta.setFecha(fechaConsulta);
+                venta.setValor(foto.getPrecio());
+                venta.setIdfoto(foto.getIdfoto());
+                boolean metido=false;
+                long i=0;
+                while(!metido)
+                {
+                    boolean coincide=false;
+                    List<Entities.Venta> ventas= ventaFacade.findAll();
+                    for(Entities.Venta aux: ventas)
+                    {
+                        if(venta.getIdfoto()==i)
+                        {
+                            coincide=true;
+                        }
+                    }
+                    if(!coincide)
+                    {
+                        venta.setIdfoto(i);
+                        ventaFacade.create(venta);
+                        metido=true;
+                    }
+                    i++;  
+                } 
+       //TODO publicar información de ventas en el topico
             }
         }
        
