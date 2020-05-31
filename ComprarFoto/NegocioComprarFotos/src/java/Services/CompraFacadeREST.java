@@ -45,7 +45,7 @@ public class CompraFacadeREST extends AbstractFacade<Compra> {
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Compra entity) {
         //super.create(entity);
-        compraFacade.comprarFotos(entity);
+        compraFacade.calcularValorFoto(entity);
     }
 
     @PUT
