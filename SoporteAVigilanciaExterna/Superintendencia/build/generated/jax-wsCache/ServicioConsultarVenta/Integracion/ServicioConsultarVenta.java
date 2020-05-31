@@ -79,6 +79,7 @@ public interface ServicioConsultarVenta {
 
     /**
      * 
+     * @param arg0
      * @return
      *     returns java.util.List<Integracion.Venta>
      */
@@ -87,7 +88,21 @@ public interface ServicioConsultarVenta {
     @RequestWrapper(localName = "findAll", targetNamespace = "http://Services/", className = "Integracion.FindAll")
     @ResponseWrapper(localName = "findAllResponse", targetNamespace = "http://Services/", className = "Integracion.FindAllResponse")
     @Action(input = "http://Services/ServicioConsultarVenta/findAllRequest", output = "http://Services/ServicioConsultarVenta/findAllResponse")
-    public List<Venta> findAll();
+    public List<Venta> findAll(
+        @WebParam(name = "arg0", targetNamespace = "")
+        FechaVenta arg0);
+
+    /**
+     * 
+     * @param entity
+     */
+    @WebMethod
+    @Oneway
+    @RequestWrapper(localName = "edit", targetNamespace = "http://Services/", className = "Integracion.Edit")
+    @Action(input = "http://Services/ServicioConsultarVenta/edit")
+    public void edit(
+        @WebParam(name = "entity", targetNamespace = "")
+        Venta entity);
 
     /**
      * 
@@ -103,17 +118,5 @@ public interface ServicioConsultarVenta {
     public List<Venta> findRange(
         @WebParam(name = "range", targetNamespace = "")
         List<Integer> range);
-
-    /**
-     * 
-     * @param entity
-     */
-    @WebMethod
-    @Oneway
-    @RequestWrapper(localName = "edit", targetNamespace = "http://Services/", className = "Integracion.Edit")
-    @Action(input = "http://Services/ServicioConsultarVenta/edit")
-    public void edit(
-        @WebParam(name = "entity", targetNamespace = "")
-        Venta entity);
 
 }
