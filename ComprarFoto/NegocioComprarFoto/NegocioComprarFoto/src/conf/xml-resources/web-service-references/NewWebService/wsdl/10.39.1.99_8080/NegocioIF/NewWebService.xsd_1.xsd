@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://servicios/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://servicios/">
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://integration/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://integration/">
 
 <xs:element name="consultarSaldo" type="tns:consultarSaldo"/>
 
@@ -26,19 +26,6 @@
 
 <xs:element name="remove" type="tns:remove"/>
 
-<xs:complexType name="edit">
-<xs:sequence>
-<xs:element name="entity" type="tns:tarjeta" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="tarjeta">
-<xs:sequence>
-<xs:element name="numerotarjeta" type="xs:long"/>
-<xs:element name="saldo" type="xs:long"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="find">
 <xs:sequence>
 <xs:element name="id" type="xs:anyType" minOccurs="0"/>
@@ -48,6 +35,13 @@
 <xs:complexType name="findResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:tarjeta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="tarjeta">
+<xs:sequence>
+<xs:element name="numerotarjeta" type="xs:long"/>
+<xs:element name="saldo" type="xs:long"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -63,13 +57,9 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="findAll">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="findAllResponse">
+<xs:complexType name="edit">
 <xs:sequence>
-<xs:element name="return" type="tns:tarjeta" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="entity" type="tns:tarjeta" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -108,6 +98,22 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="findAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:tarjeta" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="create">
+<xs:sequence>
+<xs:element name="entity" type="tns:tarjeta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="count">
 <xs:sequence/>
 </xs:complexType>
@@ -115,12 +121,6 @@
 <xs:complexType name="countResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="create">
-<xs:sequence>
-<xs:element name="entity" type="tns:tarjeta" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>
