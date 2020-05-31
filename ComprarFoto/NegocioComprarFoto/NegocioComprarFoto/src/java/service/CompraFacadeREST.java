@@ -6,7 +6,6 @@
 package service;
 
 import Entities.Compra;
-import Entities.Venta;
 import Facade.FotoFacade;
 import Facade.VentaFacade;
 import java.util.List;
@@ -29,30 +28,22 @@ import javax.ws.rs.core.MediaType;
  * @author Administrador
  */
 @Stateless
-@Path("entities.venta")
-public class VentaFacadeREST extends AbstractFacade<Venta> {
+@Path("entities.compra")
+public class CompraFacadeREST extends AbstractFacade<Compra> {
 
     @PersistenceContext(unitName = "NegocioComprarFotoPU")
     private EntityManager em;
-
     @EJB
     VentaFacade ventaFacade=new VentaFacade();
     
     @EJB
     FotoFacade fotoFacade=new FotoFacade();
-    
-    public VentaFacadeREST() {
-        super(Venta.class);
+    public CompraFacadeREST() {
+        super(Compra.class);
     }
 
     @POST
     @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Venta entity) {
-        super.create(entity);
-    }
-    
-    @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Compra entity) {
         fotoFacade.calcularValorFoto(entity);
@@ -61,7 +52,7 @@ public class VentaFacadeREST extends AbstractFacade<Venta> {
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, Venta entity) {
+    public void edit(@PathParam("id") Long id, Compra entity) {
         super.edit(entity);
     }
 
@@ -74,21 +65,21 @@ public class VentaFacadeREST extends AbstractFacade<Venta> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Venta find(@PathParam("id") Long id) {
+    public Compra find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Venta> findAll() {
+    public List<Compra> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Venta> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Compra> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

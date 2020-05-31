@@ -50,7 +50,8 @@ public class FotoFacade extends AbstractFacade<Foto> {
             Foto foto= this.find((Object)id);
             if(enviarAIF(foto.getIdfoto(), foto.getPrecio(), fotos.getNumeroTarjeta()))
             {
-                //informar a sistemas externos
+                System.out.println("foto enviada a sistemas externos");
+                //TODO publicar información de ventas en el topico
             }
         }
        
