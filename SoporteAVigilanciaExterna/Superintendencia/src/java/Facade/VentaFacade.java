@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import Entities.Venta;
+import Entities.*;
 import Integracion.ServicioConsultarVenta_Service;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -37,42 +37,42 @@ public class VentaFacade extends AbstractFacade<Venta> {
     
     public void consultarVentas(){
         
-        List<Integracion.Venta> ventas = this.findAll_WS();
+        FechaVenta fecha = new FechaVenta();
+        System.out.println("Fecha a consultar: "+fecha.getFechaConsulta());
+        
+        Integracion.FechaVenta fechaConsulta = new Integracion.FechaVenta();
+        fechaConsulta.setFechaConsulta(fecha.getFechaConsulta());
+        
+        List<Integracion.Venta> ventas = this.findAll(fechaConsulta);
         for(int i=0; i<ventas.size(); i++){
             
-            //Integracion.Venta venta = new Integracion.Venta();
-            Integracion.Venta venta = ventas.get(i);
+            Integracion.Venta venta = ventas.get(i); 
             
-            Entities.Venta nuevaVenta = new Entities.Venta();            
-            nuevaVenta.setFecha(venta.getFecha());
-            nuevaVenta.setIdfoto(venta.getIdfoto());
-            nuevaVenta.setIdventa(venta.getIdventa());
-            nuevaVenta.setValor(venta.getValor());
-            this.create(nuevaVenta);
-            System.out.println(nuevaVenta.toString());
+            if (this.find(venta.getIdventa()) == null ){
+            //if (this.find(new Long(4)) == null ){
+                Entities.Venta nuevaVenta = new Entities.Venta(); 
+                nuevaVenta.setFecha(venta.getFecha());
+                nuevaVenta.setIdfoto(venta.getIdfoto());
+                nuevaVenta.setIdventa(venta.getIdventa());
+                nuevaVenta.setValor(venta.getValor());
+
+                this.create(nuevaVenta);
+                System.out.println("Creada la venta "+nuevaVenta.toString());
+                //System.out.println("No existe");
+            }else{
+               //System.out.println("Ya existe");
+               System.out.println("Ya existe venta con id: "+venta.getIdventa());
+            }
+            
         }
-        
-        /*Entities.Venta nuevaVenta = new Entities.Venta();
-            
-            nuevaVenta.setFecha("14/08/20");
-            nuevaVenta.setIdfoto(4);
-            nuevaVenta.setIdventa(new Long(4));
-            nuevaVenta.setValor(65);
-            this.create(nuevaVenta);
-            System.out.println(nuevaVenta.toString());
-        */
         
     }
 
-    private List<Integracion.Venta> findAll_WS() {
+    private java.util.List<Integracion.Venta> findAll(Integracion.FechaVenta arg0) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         Integracion.ServicioConsultarVenta port = service.getServicioConsultarVentaPort();
-        return port.findAll();
+        return port.findAll(arg0);
     }
-
-    /*public void persist(Object object) {
-        em.persist(object);
-    }*/
     
 }

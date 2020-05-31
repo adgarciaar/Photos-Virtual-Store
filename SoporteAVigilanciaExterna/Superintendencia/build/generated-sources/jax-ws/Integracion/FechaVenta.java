@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para findAll complex type.
+ * <p>Clase Java para fechaVenta complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="findAll"&gt;
+ * &lt;complexType name="fechaVenta"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://Services/}fechaVenta" minOccurs="0"/&gt;
+ *         &lt;element name="fechaConsulta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -26,35 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findAll", propOrder = {
-    "arg0"
+@XmlType(name = "fechaVenta", propOrder = {
+    "fechaConsulta"
 })
-public class FindAll {
+public class FechaVenta {
 
-    protected FechaVenta arg0;
+    protected String fechaConsulta;
 
     /**
-     * Obtiene el valor de la propiedad arg0.
+     * Obtiene el valor de la propiedad fechaConsulta.
      * 
      * @return
      *     possible object is
-     *     {@link FechaVenta }
+     *     {@link String }
      *     
      */
-    public FechaVenta getArg0() {
-        return arg0;
+    public String getFechaConsulta() {
+        return fechaConsulta;
     }
 
     /**
-     * Define el valor de la propiedad arg0.
+     * Define el valor de la propiedad fechaConsulta.
      * 
      * @param value
      *     allowed object is
-     *     {@link FechaVenta }
+     *     {@link String }
      *     
      */
-    public void setArg0(FechaVenta value) {
-        this.arg0 = value;
+    public void setFechaConsulta(String value) {
+        this.fechaConsulta = value;
     }
 
 }

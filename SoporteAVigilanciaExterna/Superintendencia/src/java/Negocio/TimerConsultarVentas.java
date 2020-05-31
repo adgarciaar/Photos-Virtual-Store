@@ -6,7 +6,6 @@
 package Negocio;
 
 import Facade.VentaFacade;
-import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
@@ -21,11 +20,10 @@ public class TimerConsultarVentas {
     @EJB
     private VentaFacade ventaFacade;
 
-    @Schedule(dayOfWeek = "*", month = "*", hour = "0-23", dayOfMonth = "*", year = "*", minute = "*", second = "30", persistent = false)
+    @Schedule(dayOfWeek = "*", month = "*", hour = "0-23", dayOfMonth = "*", year = "*", minute = "*", second = "20", persistent = false)
     
     public void myTimer() {
-        //System.out.println("Timer event: " + new Date());
-        
+        //System.out.println("Timer event: " + new Date());       
         ventaFacade.consultarVentas();
     }
     
