@@ -43,13 +43,13 @@ public class FotoFacade extends AbstractFacade<Foto> {
     public void calcularValorFoto(Compra fotos)
     {
         System.out.print("llegue a la funcion calcular");
-        String todosLosIds=fotos.getIdFotos();
+        String todosLosIds=fotos.getIdfotos();
         StringTokenizer st= new StringTokenizer(todosLosIds, ",");
         while (st.hasMoreTokens())
         {
             Long id= Long.parseLong(st.nextToken().trim());
             Foto foto= this.find((Object)id);
-            if(enviarAIF(foto.getIdfoto(), foto.getPrecio(), fotos.getNumeroTarjeta()))
+            if(enviarAIF(foto.getIdfoto(), foto.getPrecio(), fotos.getNumerotarjeta()))
             {
                 System.out.println("foto enviada a sistemas externos");
                 //TODO publicar información de ventas en el topico
