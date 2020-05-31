@@ -5,6 +5,7 @@
  */
 package Entities;
 
+import Integracion.Comprador;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -182,5 +183,5 @@ public class Compra implements Serializable {
     public String toString() {
         return "Entities.Compra[ idcompra=" + idcompra + " ]";
     }
-    
+  
 }

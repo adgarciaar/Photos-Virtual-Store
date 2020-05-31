@@ -26,21 +26,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-NewWebService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/NewWebService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/NewWebService" destdir="${build.generated.dir}/jax-wsCache/NewWebService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/NewWebService/wsdl/10.39.1.99_8080/NegocioIF/NewWebService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://10.39.1.99:8080/NegocioIF/NewWebService?WSDL" xnocompile="true" xendorsed="true" package="Integrador">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/NewWebService/wsdl/10.39.1.99_8080/NegocioIF/NewWebService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/NewWebService"/>
+    <target name="wsimport-client-ServicioIF" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ServicioIF"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ServicioIF" destdir="${build.generated.dir}/jax-wsCache/ServicioIF" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ServicioIF/wsdl/10.39.1.99_8080/NegocioIF/ServicioIF.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://10.39.1.99:8080/NegocioIF/ServicioIF?WSDL" xnocompile="true" xendorsed="true" package="Integracion">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ServicioIF/wsdl/10.39.1.99_8080/NegocioIF/ServicioIF.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ServicioIF"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/NewWebService">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ServicioIF">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-NewWebService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/Integrador"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/NewWebService"/>
+    <target name="wsimport-client-clean-ServicioIF" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/Integracion"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ServicioIF"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-NewWebService"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-ServicioIF"/>
 </project>
