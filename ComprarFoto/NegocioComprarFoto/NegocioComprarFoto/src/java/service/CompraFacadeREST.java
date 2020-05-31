@@ -31,8 +31,8 @@ import javax.ws.rs.core.MediaType;
 @Path("entities.compra")
 public class CompraFacadeREST extends AbstractFacade<Compra> {
 
-    @PersistenceContext(unitName = "NegocioComprarFotoPU")
-    private EntityManager em;
+
+    private EntityManager em=null;
     @EJB
     VentaFacade ventaFacade=new VentaFacade();
     
@@ -49,50 +49,11 @@ public class CompraFacadeREST extends AbstractFacade<Compra> {
         fotoFacade.calcularValorFoto(entity);
     }
 
-    @PUT
-    @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, Compra entity) {
-        super.edit(entity);
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void remove(@PathParam("id") Long id) {
-        super.remove(super.find(id));
-    }
-
-    @GET
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Compra find(@PathParam("id") Long id) {
-        return super.find(id);
-    }
-
-    @GET
-    @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Compra> findAll() {
-        return super.findAll();
-    }
-
-    @GET
-    @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Compra> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @GET
-    @Path("count")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String countREST() {
-        return String.valueOf(super.count());
-    }
-
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+
+ 
 }
