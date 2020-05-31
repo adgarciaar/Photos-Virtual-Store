@@ -9,6 +9,7 @@ import entities.Comprador;
 import entities.Tarjeta;
 import entities.Venta;
 import facades.FacadeIF;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.jws.Oneway;
@@ -68,6 +69,9 @@ public class ServicioIF {
     @WebMethod(operationName = "consultarSaldo")
     public boolean consultarSaldo(Comprador comprador, Venta venta){
         Tarjeta tarjeta = ejbRef.consultarSaldo(comprador.getNumeroTarjeta());
+        if (tarjeta == null){
+            return false;
+        }
         return venta.getValor() <= tarjeta.getSaldo();
     }
     
