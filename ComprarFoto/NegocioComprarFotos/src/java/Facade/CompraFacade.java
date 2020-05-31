@@ -9,6 +9,10 @@ import Entities.Compra;
 import Entities.Foto;
 import Integrador.Comprador;
 import Integrador.ServicioIF_Service;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.StringTokenizer;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -32,6 +36,8 @@ public class CompraFacade extends AbstractFacade<Compra> {
     @EJB
     FotoFacade fotoFacade;
 
+    @EJB
+    VentaFacade ventaFacade;
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -55,6 +61,36 @@ public class CompraFacade extends AbstractFacade<Compra> {
             if(prueba)
             {
                 System.out.println("foto enviada a sistemas externos");
+                System.out.println("foto enviada a sistemas externos");
+                Entities.Venta venta=new Entities.Venta();
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+                Date date = new Date();
+                String fechaConsulta = dateFormat.format(date);  
+                venta.setFecha(fechaConsulta);
+                venta.setValor(foto.getPrecio());
+                venta.setIdfoto(foto.getIdfoto());
+                boolean metido=false;
+                long mayor=0;
+                
+                List<Entities.Venta> ventas= ventaFacade.findAll();
+                if(ventas==null)
+                {
+                    venta.setIdventa(new Long(0).longValue());
+                    ventaFacade.create(venta);
+                }
+                else
+                {
+                    for(Entities.Venta aux: ventas)
+                    {
+                        if(aux.getIdventa()>mayor)
+                        {
+                            mayor=aux.getIdventa();  
+                        }
+                    }
+                    venta.setIdventa(mayor+1);
+                    ventaFacade.create(venta);
+                }
+                
                 //TODO publicar información de ventas en el topico
             }
         }
