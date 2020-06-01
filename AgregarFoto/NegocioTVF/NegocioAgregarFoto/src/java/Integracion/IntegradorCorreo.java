@@ -34,15 +34,9 @@ public class IntegradorCorreo {
     private static final Logger LOGGER = Logger.getAnonymousLogger();
 
     private static final String SERVIDOR_SMTP = "smtp.office365.com";
-    private static final int PORT_SERVIDOR_SMTP = 587;
-    //private static final String CONTA_PADRAO = "diego.mateus@javeriana.edu.co";
-    private static final String password = "mateuscruz1994";
-
-    //private final String from = "diego.mateus@javeriana.edu.co";
-    //private final String to = "adriangarcia@javeriana.edu.co";
-
-    //private final String subject = "Prueba desde Java 2";
-    //private final String messageContent = "Mi primer correo desde Java 2";
+    private static final int PORT_SERVIDOR_SMTP = 587;    
+    private static final String password = "password";
+    
 
     public void sendEmail(Correo correo) {
         final Session session = Session.getInstance(this.getEmailProperties(), new Authenticator() {

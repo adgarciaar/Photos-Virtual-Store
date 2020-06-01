@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://10.39.1.96:3000/WSDerechosAutor.svc?singleWsdl" uri="wsdl/10.39.1.96_3000/WSDerechosAutor.svc.singlewsdl.wsdl"/>
+    <system systemId="http://10.39.1.96:19367/WSDerechosAutor.svc?singleWsdl" uri="wsdl/10.39.1.96_19367/WSDerechosAutor.svc.singlewsdl.wsdl"/>
+    <system systemId="http://10.39.1.96/SistemaDerechosAutor/WSDerechosAutor.svc?singleWsdl" uri="wsdl/10.39.1.96/SistemaDerechosAutor/WSDerechosAutor.svc.singlewsdl.wsdl"/>
+    <system systemId="http://localhost:63413/WSDerechosAutor.svc?singleWsdl" uri="wsdl/localhost_63413/WSDerechosAutor.svc.singlewsdl.wsdl"/>
+</catalog>

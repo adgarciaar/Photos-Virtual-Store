@@ -8,23 +8,30 @@ using WebConsultarDerechosAutor.Models;
 namespace WebConsultarDerechosAutor
 {
     public class DerechosAutorController : Controller
-    {
-        // GET: DerechosAutor      
-
-        
+    {   
         public ActionResult Validacion()
-        {          
+        {  
             return View();
         }
 
         [HttpPost]
-        public ActionResult Validacion(Foto foto)
+        public ActionResult Validacion(Foto model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             proxyDerechosAutor.WSDerechosAutorClient proxy = new proxyDerechosAutor.WSDerechosAutorClient();
-            Boolean esValida = proxy.ConsultarFotoHabilitada(foto.IdFoto);
-            ViewBag.Alejo = "respuesta:  " + esValida;
+            Boolean esValida = proxy.ConsultarFotoHabilitada(model.IdFoto);
+            ViewBag.Message = " respuesta:  " + esValida;
+            return View("Respuesta");
+
+        }
+
+        public ActionResult Respuesta()
+        {
             return View();
         }
 
-    }
+        }
 }
